@@ -26,8 +26,9 @@ public class DessinVoiture extends JFrame {
 	}
 
 	public void dessinerVoiture(int xPixelVoiture, Graphics graphics) {
-		graphics.fillRect(xPixelVoiture, 200, 40, 20);
-
+		int[] xPoints = {xPixelVoiture,xPixelVoiture,xPixelVoiture+20};
+		int[] yPoints = {190,210,200};
+		graphics.fillPolygon(xPoints, yPoints, 3);
 	}
 
 	public void setXPixelVoiture(int xPixelVoiture) {
