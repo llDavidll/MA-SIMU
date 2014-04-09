@@ -20,6 +20,7 @@ public class DessinVoiture extends JFrame {
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
 		this.xPixelVoiture = 0;
+		this.yPixelVoiture = 480;
 	}
 
 	@Override
@@ -31,7 +32,7 @@ public class DessinVoiture extends JFrame {
 
 	public void dessinerVoiture(Graphics graphics) {
 		int[] xPoints = {xPixelVoiture,xPixelVoiture,xPixelVoiture+20};
-		int[] yPoints = {190,210,200};
+		int[] yPoints = {yPixelVoiture - 10,yPixelVoiture + 10,yPixelVoiture};
 		graphics.fillPolygon(xPoints, yPoints, 3);
 	}
 
