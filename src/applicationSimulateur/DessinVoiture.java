@@ -9,7 +9,8 @@ public class DessinVoiture extends JFrame {
 	public static final int TailleFenetreEnPixels = 500;
 	
 	private int xPixelVoiture;
-
+	private int yPixelVoiture;
+	
 	public DessinVoiture() {
 		super();
 		this.setTitle("Simulateur de Voiture");
@@ -21,11 +22,11 @@ public class DessinVoiture extends JFrame {
 	@Override
 	public void paint(Graphics graphics) {
 		super.paint(graphics);
-		dessinerVoiture(this.xPixelVoiture, graphics);
+		dessinerVoiture(graphics);
 
 	}
 
-	public void dessinerVoiture(int xPixelVoiture, Graphics graphics) {
+	public void dessinerVoiture(Graphics graphics) {
 		int[] xPoints = {xPixelVoiture,xPixelVoiture,xPixelVoiture+20};
 		int[] yPoints = {190,210,200};
 		graphics.fillPolygon(xPoints, yPoints, 3);
@@ -33,6 +34,10 @@ public class DessinVoiture extends JFrame {
 
 	public void setXPixelVoiture(int xPixelVoiture) {
 		this.xPixelVoiture = xPixelVoiture;
+	}
+
+	public void setYPixelVoiture(int yPixelVoiture) {
+		this.yPixelVoiture = yPixelVoiture;
 	}
 
 }
