@@ -13,6 +13,9 @@ public class DessinVoiture extends JFrame {
 	
 	public DessinVoiture() {
 		super();
+		
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
