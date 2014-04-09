@@ -28,8 +28,5 @@ public class SimulateurVoiture {
 		});
 		
 		timerAvancer.start();
-		
-		while(true){
-		}
 	}
 }
