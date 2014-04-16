@@ -7,15 +7,16 @@ import javax.swing.JFrame;
 public class DessinVoiture extends JFrame {
 
 	public static final int TailleFenetreEnPixels = 500;
-	
+
 	private int xPixelVoiture;
 	private int yPixelVoiture;
-	
+	private double angle;
+
 	public DessinVoiture() {
 		super();
-		
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
@@ -31,8 +32,9 @@ public class DessinVoiture extends JFrame {
 	}
 
 	public void dessinerVoiture(Graphics graphics) {
-		int[] xPoints = {xPixelVoiture,xPixelVoiture,xPixelVoiture+20};
-		int[] yPoints = {yPixelVoiture - 10,yPixelVoiture + 10,yPixelVoiture};
+
+		int[] xPoints = { xPixelVoiture, xPixelVoiture, xPixelVoiture + 20 };
+		int[] yPoints = { yPixelVoiture - 10, yPixelVoiture + 10, yPixelVoiture };
 		graphics.fillPolygon(xPoints, yPoints, 3);
 	}
 
@@ -42,6 +44,10 @@ public class DessinVoiture extends JFrame {
 
 	public void setYPixelVoiture(int yPixelVoiture) {
 		this.yPixelVoiture = yPixelVoiture;
+	}
+
+	public void setAngleDegreVoiture(double angleDegreVoiture) {
+		this.angle = angleDegreVoiture;
 	}
 
 }
