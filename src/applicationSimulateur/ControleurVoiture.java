@@ -38,9 +38,7 @@ public class ControleurVoiture implements Observer {
 		int xPixelVoiture = this.transformerMetrePixel(xVoiture);
 		int yPixelVoiture = this.transformerMetrePixel(yVoiture);
 
-		ihm.setXPixelVoiture(xPixelVoiture);
-		ihm.setYPixelVoiture(yPixelVoiture);
-		ihm.setAngleDegreVoiture(angleVoiture);
+		ihm.setVoiture(xPixelVoiture, yPixelVoiture, angleVoiture);
 		ihm.repaint();
 
 	}
