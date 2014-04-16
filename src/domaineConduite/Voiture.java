@@ -48,8 +48,8 @@ public class Voiture extends Observable {
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		coordXEnMetres += vitesseMetreParSecondes * Math.cos(angle);
-		coordYEnMetres += vitesseMetreParSecondes * Math.sin(angle);
+		coordXEnMetres += vitesseMetreParSecondes * Math.cos(Math.toRadians(angle));
+		coordYEnMetres += vitesseMetreParSecondes * Math.sin(Math.toRadians(angle));
 		notificationObservateurs();
 	}
 
