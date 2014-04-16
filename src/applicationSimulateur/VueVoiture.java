@@ -1,47 +1,54 @@
 package applicationSimulateur;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.awt.Graphics;
 
-import domaineConduite.Voiture;
+import javax.swing.JFrame;
 
-public class VueVoiture implements Observer {
+public class VueVoiture extends JFrame {
 
-	private Voiture voiture;
+	public static final int TailleFenetreEnPixels = 500;
 
-	private DessinVoiture ihm;
+	private int xPixelVoiture;
+	private int yPixelVoiture;
+	private double angle;
 
-	public VueVoiture(Voiture voiture, DessinVoiture ihm) {
-		this.voiture = voiture;
-		this.voiture.addObserver(this);
-		this.ihm = ihm;
-	}
+	public VueVoiture() {
+		super();
 
-	public int transformerMetrePixel(int coordonneeXEnMetre) {
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		int ratioDomaineFenetre = Voiture.largeurDomaine
-				/ DessinVoiture.TailleFenetreEnPixels;
-
-		int coordonneeXEnPixels = coordonneeXEnMetre / ratioDomaineFenetre;
-
-		return coordonneeXEnPixels;
+		this.setTitle("Simulateur de Voiture");
+		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
+		this.setVisible(true);
+		this.xPixelVoiture = 0;
+		this.yPixelVoiture = 480;
 	}
 
 	@Override
-	public void update(Observable arg0, Object arg1) {
+	public void paint(Graphics graphics) {
+		super.paint(graphics);
+		dessinerVoiture(graphics);
 
-		int xVoiture = this.voiture.getCoordXEnMetres();
-		int yVoiture = this.voiture.getCoordXEnMetres();
-		double angleVoiture = this.voiture.getAngle();
+	}
 
-		int xPixelVoiture = this.transformerMetrePixel(xVoiture);
-		int yPixelVoiture = this.transformerMetrePixel(yVoiture);
+	public void dessinerVoiture(Graphics graphics) {
 
-		ihm.setXPixelVoiture(xPixelVoiture);
-		ihm.setYPixelVoiture(yPixelVoiture);
-		ihm.setAngleDegreVoiture(angleVoiture);
-		ihm.repaint();
+		
+		int[] xPoints = { xPixelVoiture, xPixelVoiture, xPixelVoiture + 20 };
+		int[] yPoints = { yPixelVoiture - 10, yPixelVoiture + 10, yPixelVoiture };
+		graphics.fillPolygon(xPoints, yPoints, 3);
+	}
 
+	public void setXPixelVoiture(int xPixelVoiture) {
+		this.xPixelVoiture = xPixelVoiture;
+	}
+
+	public void setYPixelVoiture(int yPixelVoiture) {
+		this.yPixelVoiture = yPixelVoiture;
+	}
+
+	public void setAngleDegreVoiture(double angleDegreVoiture) {
+		this.angle = angleDegreVoiture;
 	}
 
 }
