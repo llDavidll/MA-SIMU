@@ -27,15 +27,20 @@ public class Voiture extends Observable {
 	}
 
 	public int getCoordXEnMetres() {
-		return coordXEnMetres;
+		return this.coordXEnMetres;
 	}
 	
 	public int getCoordYEnMetres(){
-		return coordYEnMetres;
+		return this.coordYEnMetres;
 	}
 	
+	
 	public double getAngle(){
-		return angle;
+		return this.angle;
+	}
+	
+	public void setAngle(double nouvelAngle){
+		this.angle = nouvelAngle;
 	}
 
 	public int getVitesseMetreParSecondes() {
