@@ -30,21 +30,4 @@ public class TestVueVoiture {
 		assertEquals(50, mTriangle.transformerMetrePixel(100));
 	}
 
-	@Test
-	public void testSetAngle() {
-
-		double angle = 25;
-
-		assertEquals(0, mTriangle.getAngle(), 0.01);
-
-		mTriangle.setAngle(angle);
-
-		assertEquals(25, mTriangle.getAngle(), 0.01);
-
-		angle = 400.6;
-		mTriangle.setAngle(angle);
-
-		assertEquals(40.6, mTriangle.getAngle(), 0.01);
-	}
-
 }

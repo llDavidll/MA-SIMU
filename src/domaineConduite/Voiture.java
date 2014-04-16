@@ -7,7 +7,7 @@ public class Voiture extends Observable {
 	private int coordXEnMetres;
 	private int coordYEnMetres;
 	private double angle;
-	
+
 	private int vitesseMetreParSecondes;
 
 	public static final int largeurDomaine = 1000;
@@ -19,7 +19,8 @@ public class Voiture extends Observable {
 		this.angle = 0.0;
 	}
 
-	public Voiture(int coordXEnMetres, int coordYEnMetres, int vitesseMetreParSecondes) {
+	public Voiture(int coordXEnMetres, int coordYEnMetres,
+			int vitesseMetreParSecondes) {
 		this.coordXEnMetres = coordXEnMetres;
 		this.coordYEnMetres = coordYEnMetres;
 		this.vitesseMetreParSecondes = vitesseMetreParSecondes;
@@ -29,18 +30,17 @@ public class Voiture extends Observable {
 	public int getCoordXEnMetres() {
 		return this.coordXEnMetres;
 	}
-	
-	public int getCoordYEnMetres(){
+
+	public int getCoordYEnMetres() {
 		return this.coordYEnMetres;
 	}
-	
-	
-	public double getAngle(){
+
+	public double getAngle() {
 		return this.angle;
 	}
-	
-	public void setAngle(double nouvelAngle){
-		this.angle = nouvelAngle;
+
+	public void setAngle(double nouvelAngle) {
+		this.angle = nouvelAngle % 360;
 	}
 
 	public int getVitesseMetreParSecondes() {

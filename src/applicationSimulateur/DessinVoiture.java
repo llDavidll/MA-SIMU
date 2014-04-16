@@ -33,6 +33,7 @@ public class DessinVoiture extends JFrame {
 
 	public void dessinerVoiture(Graphics graphics) {
 
+		
 		int[] xPoints = { xPixelVoiture, xPixelVoiture, xPixelVoiture + 20 };
 		int[] yPoints = { yPixelVoiture - 10, yPixelVoiture + 10, yPixelVoiture };
 		graphics.fillPolygon(xPoints, yPoints, 3);
