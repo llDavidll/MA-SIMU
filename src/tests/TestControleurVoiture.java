@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 
-import applicationSimulateur.VueVoiture;
 import applicationSimulateur.ControleurVoiture;
 import domaineConduite.Voiture;
 
@@ -17,9 +16,8 @@ public class TestControleurVoiture {
 	public void setUp() throws Exception {
 
 		Voiture voiture = new Voiture(0, 0);
-		VueVoiture dessin = new VueVoiture();
 
-		mTriangle = new ControleurVoiture(voiture, dessin);
+		mTriangle = new ControleurVoiture(voiture);
 	}
 
 	@Test

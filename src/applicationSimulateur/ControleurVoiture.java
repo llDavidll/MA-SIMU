@@ -1,5 +1,6 @@
 package applicationSimulateur;
 
+import java.awt.event.KeyEvent;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -11,10 +12,10 @@ public class ControleurVoiture implements Observer {
 
 	private VueVoiture ihm;
 
-	public ControleurVoiture(Voiture voiture, VueVoiture ihm) {
+	public ControleurVoiture(Voiture voiture) {
 		this.voiture = voiture;
 		this.voiture.addObserver(this);
-		this.ihm = ihm;
+		this.ihm = new VueVoiture(this);
 	}
 
 	public int transformerMetrePixel(int coordonneeXEnMetre) {
@@ -41,6 +42,25 @@ public class ControleurVoiture implements Observer {
 		ihm.setVoiture(xPixelVoiture, yPixelVoiture, angleVoiture);
 		ihm.repaint();
 
+	}
+	
+	public void inputs(KeyEvent e)
+	{
+		switch(e.getKeyCode())
+		{
+		case KeyEvent.VK_UP:
+			voiture.acc();
+			break;
+		case KeyEvent.VK_DOWN:
+			voiture.dec();
+			break;
+		case KeyEvent.VK_RIGHT:
+			voiture.turnRight();
+			break;
+		case KeyEvent.VK_LEFT:
+			voiture.turnLeft();
+			break;
+		}
 	}
 
 }

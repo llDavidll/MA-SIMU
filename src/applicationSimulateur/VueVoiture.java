@@ -3,6 +3,8 @@ package applicationSimulateur;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
@@ -12,8 +14,9 @@ public class VueVoiture extends JFrame {
 	public static final int TailleFenetreEnPixels = 500;
 
 	private Triangle2D voiture;
+	private ControleurVoiture controleurVoiture;
 
-	public VueVoiture() {
+	public VueVoiture(final ControleurVoiture controleurVoiture) {
 		super();
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,6 +25,26 @@ public class VueVoiture extends JFrame {
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
 		this.voiture = new Triangle2D();
+		this.controleurVoiture = controleurVoiture;
+		this.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				controleurVoiture.inputs(e);
+				
+			}
+		});
 	}
 
 	@Override
@@ -46,5 +69,4 @@ public class VueVoiture extends JFrame {
 	public void setVoiture(int xVoiture, int yVoiture, double angle) {
 		this.voiture = new Triangle2D(new Vector2D(xVoiture,yVoiture),angle);
 	}
-
 }

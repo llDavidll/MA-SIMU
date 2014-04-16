@@ -46,6 +46,26 @@ public class Voiture extends Observable {
 	public int getVitesseMetreParSecondes() {
 		return vitesseMetreParSecondes;
 	}
+	
+	public void turnRight()
+	{
+		angle -= 5;
+	}
+	
+	public void turnLeft()
+	{
+		angle += 5;
+	}
+	
+	public void acc()
+	{
+		vitesseMetreParSecondes += 5;
+	}
+	
+	public void dec()
+	{
+		vitesseMetreParSecondes -= 5;
+	}
 
 	public void avancerEnFonctionDeLaVitesse() {
 		coordXEnMetres += vitesseMetreParSecondes * Math.cos(Math.toRadians(angle));
