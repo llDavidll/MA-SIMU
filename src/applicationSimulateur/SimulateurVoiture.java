@@ -13,7 +13,7 @@ public class SimulateurVoiture {
 	public static final int dureeUneSecondeEnMilliSecondes = 100;
 
 	public static void main(String[] args) {
-		final Voiture voiture = new Voiture(100, 900, 50);
+		final Voiture voiture = new Voiture(100, 900, 20);
 		voiture.setAngle(75);
 		final ControleurVoiture triangle = new ControleurVoiture(voiture);
 		voiture.avancerEnFonctionDeLaVitesse();

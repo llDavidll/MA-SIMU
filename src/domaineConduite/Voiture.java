@@ -70,6 +70,32 @@ public class Voiture extends Observable {
 	public void avancerEnFonctionDeLaVitesse() {
 		coordXEnMetres += vitesseMetreParSecondes * Math.cos(Math.toRadians(angle));
 		coordYEnMetres -= vitesseMetreParSecondes * Math.sin(Math.toRadians(angle));
+		if(coordXEnMetres < 50)
+		{
+			coordXEnMetres = 50;
+			if(angle%360 < 180)
+				angle = 180 - angle%360;
+			else
+				angle = 180 + angle%360;
+		}
+		else if(coordXEnMetres > 1000)
+		{
+			coordXEnMetres = 1000;
+			if(angle%360 < 90)
+				angle = 180 - angle%360;
+			else
+				angle = 180 + angle%360;
+		}
+		else if(coordYEnMetres < 50)
+		{
+			coordYEnMetres = 50;
+			angle = -angle;
+		}
+		else if(coordYEnMetres > 1000)
+		{
+			coordYEnMetres = 1000;
+			angle = -angle;
+		}
 		notificationObservateurs();
 	}
 
