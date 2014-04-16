@@ -36,16 +36,16 @@ public class VueVoiture extends JFrame {
 	public void dessinerVoiture(Graphics graphics) {
 
 		Graphics2D g2d = (Graphics2D) graphics;
-		
+
 		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
-		g2d.rotate(angle, xPixelVoiture, yPixelVoiture);
+		g2d.rotate(Math.toRadians(angle), xPixelVoiture, yPixelVoiture);
 
 		int[] xPoints = { xPixelVoiture, xPixelVoiture, xPixelVoiture + 20 };
 		int[] yPoints = { yPixelVoiture - 10, yPixelVoiture + 10, yPixelVoiture };
 		graphics.fillPolygon(xPoints, yPoints, 3);
 
-		g2d.rotate(-angle, xPixelVoiture, yPixelVoiture);
+		g2d.rotate(Math.toRadians(-angle), xPixelVoiture, yPixelVoiture);
 	}
 
 	public void setXPixelVoiture(int xPixelVoiture) {
