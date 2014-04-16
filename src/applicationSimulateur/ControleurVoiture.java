@@ -31,7 +31,8 @@ public class ControleurVoiture implements Observer {
 	public void update(Observable arg0, Object arg1) {
 
 		int xVoiture = this.voiture.getCoordXEnMetres();
-		int yVoiture = this.voiture.getCoordXEnMetres();
+		int yVoiture = this.voiture.getCoordYEnMetres();
+		
 		double angleVoiture = this.voiture.getAngle();
 
 		int xPixelVoiture = this.transformerMetrePixel(xVoiture);

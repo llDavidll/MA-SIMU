@@ -15,8 +15,10 @@ public class SimulateurVoiture {
 	public static void main(String[] args) {
 		
 		VueVoiture dessinVoiture = new VueVoiture();
-		final Voiture voiture = new Voiture(100, 0, 50);
+		final Voiture voiture = new Voiture(100, 900, 50);
+		voiture.setAngle(5);
 		final ControleurVoiture triangle = new ControleurVoiture(voiture, dessinVoiture);
+		voiture.avancerEnFonctionDeLaVitesse();
 		Timer timerAvancer = new Timer(dureeUneSecondeEnMilliSecondes, new ActionListener() {
 			
 			@Override
