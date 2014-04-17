@@ -44,8 +44,7 @@ public class ControleurVoiture implements Observer {
 
 	}
 	
-	public void inputs(KeyEvent e)
-	{
+	public void inputs(KeyEvent e) {
 		switch(e.getKeyCode())
 		{
 		case KeyEvent.VK_UP:

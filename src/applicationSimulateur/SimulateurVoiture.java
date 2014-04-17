@@ -10,7 +10,7 @@ import domaineConduite.Voiture;
 
 public class SimulateurVoiture {
 
-	public static final int dureeUneSecondeEnMilliSecondes = 100;
+	public static final int dureeUneSecondeEnMilliSecondes = 500;
 
 	public static void main(String[] args) {
 		final Voiture voiture = new Voiture(100, 900, 20);

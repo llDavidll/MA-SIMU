@@ -3,6 +3,7 @@ package applicationSimulateur;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -26,19 +27,7 @@ public class VueVoiture extends JFrame {
 		this.setVisible(true);
 		this.voiture = new Triangle2D();
 		this.controleurVoiture = controleurVoiture;
-		this.addKeyListener(new KeyListener() {
-			
-			@Override
-			public void keyTyped(KeyEvent e) {
-				
-			}
-			
-			@Override
-			public void keyReleased(KeyEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-			
+		this.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
 				controleurVoiture.inputs(e);

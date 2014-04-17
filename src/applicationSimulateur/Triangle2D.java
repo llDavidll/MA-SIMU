@@ -11,13 +11,11 @@ public class Triangle2D {
 	private int longueur;
 	private int largeur;
 	
-	public Triangle2D()
-	{
+	public Triangle2D() {
 		this(30, 10);
 	}
 	
-	public Triangle2D(Vector2D position, double angle)
-	{
+	public Triangle2D(Vector2D position, double angle) {
 		this(30, 10, angle, position);
 	}
 	
@@ -25,8 +23,7 @@ public class Triangle2D {
 		this(longueur, largeur, 90, new Vector2D(100,100));
 	}
 	
-	public Triangle2D(int longueur, int largeur, double angle, Vector2D position)
-	{
+	public Triangle2D(int longueur, int largeur, double angle, Vector2D position) {
 		this.angle = angle;
 		this.longueur = longueur;
 		this.largeur = largeur;
@@ -49,20 +46,17 @@ public class Triangle2D {
 		return ag;
 	}
 	
-	public void setAngle(double angle)
-	{
+	public void setAngle(double angle) {
 		this.angle = angle;
 		setRotate();
 	}
 	
-	public void setPosition(Vector2D position)
-	{
+	public void setPosition(Vector2D position) {
 		this.position = position;
 		setRotate();
 	}
 	
-	private void setRotate()
-	{
+	private void setRotate() {
 		avant.setX( (int)(rotateX(longueur,0,angle)) + position.getX());
 		avant.setY( (int)(rotateY(longueur,0,angle)) + position.getY());
 		ad.setX(    (int)(rotateX(0,largeur,angle))  + position.getX());
@@ -71,22 +65,18 @@ public class Triangle2D {
 		ag.setY(    (int)(rotateY(0,-largeur,angle)) + position.getY());
 	}
 	
-	private double toRadian(Double angle)
-	{
+	private double toRadian(Double angle) {
 		return (Math.PI * angle)/180;
 	}
 	
-	private double rotateX(int x, int y, double angle)
-	{
+	private double rotateX(int x, int y, double angle) {
 		Double xRetour = 0.;
 		xRetour += x * Math.cos(toRadian(angle));
 		xRetour += y * Math.sin(toRadian(angle));
 		return xRetour;
 	}
 	
-	private double rotateY(int x, int y, double angle)
-	{
-		
+	private double rotateY(int x, int y, double angle) {		
 		Double yRetour = 0.;
 		yRetour -= x * Math.sin(toRadian(angle));
 		yRetour += y * Math.cos(toRadian(angle));
