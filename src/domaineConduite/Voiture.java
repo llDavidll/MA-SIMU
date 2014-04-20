@@ -46,48 +46,71 @@ public class Voiture extends Observable {
 	public int getVitesseMetreParSecondes() {
 		return vitesseMetreParSecondes;
 	}
-	
-	public void turnRight() {
+
+	public void tournerDroite() {
 		angle -= 5;
 	}
-	
-	public void turnLeft() {
+
+	public void tournerGauche() {
 		angle += 5;
 	}
-	
-	public void acc() {
+
+	public void accelerer() {
 		vitesseMetreParSecondes += 10;
 	}
-	
-	public void dec() {
+
+	public void decelerer() {
 		vitesseMetreParSecondes -= 10;
 	}
 
-	public void avancerEnFonctionDeLaVitesse() {
-		coordXEnMetres += vitesseMetreParSecondes * Math.cos(Math.toRadians(angle));
-		coordYEnMetres -= vitesseMetreParSecondes * Math.sin(Math.toRadians(angle));
-		if(coordXEnMetres < 50) {
+	private boolean procheDuBordGaucheDuDomaine() {
+		return (coordXEnMetres < 50);
+	}
+
+	private boolean procheDuBordDroitDuDomaine() {
+		return (coordXEnMetres > largeurDomaine - 50);
+	}
+
+	private boolean procheDuBordSuperieurDuDomaine() {
+		return (coordYEnMetres > largeurDomaine - 100);
+	}
+
+	private boolean procheDuBordInferieurDuDomaine() {
+		return (coordYEnMetres < 50);
+	}
+
+	private void rebondSurBordLateralDuDomaine() {
+		if (procheDuBordGaucheDuDomaine()) {
 			coordXEnMetres = 50;
-			if(angle%360 < 180)
-				angle = 180 - angle%360;
-			else
-				angle = 180 + angle%360;
+		} else {
+			coordXEnMetres = largeurDomaine-50;
 		}
-		else if(coordXEnMetres > 1000) {
-			coordXEnMetres = 1000;
-			if(angle%360 < 90)
-				angle = 180 - angle%360;
-			else
-				angle = 180 + angle%360;
-		}
-		else if(coordYEnMetres < 50) {
+		angle = -(angle + 180) % 360;
+	}
+
+	private void rebondSurBordSuperieurOuInferieurDuDomaine() {
+		if (procheDuBordInferieurDuDomaine()) {
 			coordYEnMetres = 50;
-			angle = -angle;
+		} else {
+			coordYEnMetres = largeurDomaine-100;
 		}
-		else if(coordYEnMetres > 1000) {
-			coordYEnMetres = 1000;
-			angle = -angle;
+		angle = -angle;
+	}
+
+	public void avancerEnFonctionDeLaVitesse() {
+		coordXEnMetres += vitesseMetreParSecondes
+				* Math.cos(Math.toRadians(angle));
+		coordYEnMetres -= vitesseMetreParSecondes
+				* Math.sin(Math.toRadians(angle));
+		
+		if (procheDuBordGaucheDuDomaine() || procheDuBordDroitDuDomaine()) {
+			rebondSurBordLateralDuDomaine();
+		} else {
+			if (procheDuBordInferieurDuDomaine() || procheDuBordSuperieurDuDomaine()) {
+				rebondSurBordSuperieurOuInferieurDuDomaine();
+			}
 		}
+
 		notificationObservateurs();
 	}
 
