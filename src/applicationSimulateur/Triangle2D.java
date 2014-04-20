@@ -36,11 +36,11 @@ public class Triangle2D {
 		return avant;
 	}
 
-	public Vector2D getAd() {
+	public Vector2D getArriereDroit() {
 		return arriereDroit;
 	}
 
-	public Vector2D getAg() {
+	public Vector2D getArriereGauche() {
 		return arriereGauche;
 	}
 

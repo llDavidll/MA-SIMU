@@ -57,9 +57,9 @@ public class VueVoiture extends JFrame {
 					RenderingHints.VALUE_ANTIALIAS_ON);
 
 			int[] xPoints = { voiture.getAvant().getX(),
-					voiture.getAd().getX(), voiture.getAg().getX() };
+					voiture.getArriereDroit().getX(), voiture.getArriereGauche().getX() };
 			int[] yPoints = { voiture.getAvant().getY(),
-					voiture.getAd().getY(), voiture.getAg().getY() };
+					voiture.getArriereDroit().getY(), voiture.getArriereGauche().getY() };
 			graphics.fillPolygon(xPoints, yPoints, 3);
 		}
 	}
