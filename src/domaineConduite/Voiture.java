@@ -4,9 +4,11 @@ import java.util.Observable;
 
 public class Voiture extends Observable {
 
-	private int coordXEnMetres;
-	private int coordYEnMetres;
+	private float coordXEnMetres;
+	private float coordYEnMetres;
 	private double angle;
+
+	private long dernierTemps = 0l;
 
 	private int vitesseMetreParSecondes;
 
@@ -28,11 +30,11 @@ public class Voiture extends Observable {
 	}
 
 	public int getCoordXEnMetres() {
-		return this.coordXEnMetres;
+		return (int) this.coordXEnMetres;
 	}
 
 	public int getCoordYEnMetres() {
-		return this.coordYEnMetres;
+		return (int) this.coordYEnMetres;
 	}
 
 	public double getAngle() {
@@ -83,7 +85,7 @@ public class Voiture extends Observable {
 		if (procheDuBordGaucheDuDomaine()) {
 			coordXEnMetres = 50;
 		} else {
-			coordXEnMetres = largeurDomaine-50;
+			coordXEnMetres = largeurDomaine - 50;
 		}
 		angle = -(angle + 180) % 360;
 	}
@@ -92,21 +94,33 @@ public class Voiture extends Observable {
 		if (procheDuBordInferieurDuDomaine()) {
 			coordYEnMetres = 50;
 		} else {
-			coordYEnMetres = largeurDomaine-100;
+			coordYEnMetres = largeurDomaine - 100;
 		}
 		angle = -angle;
 	}
 
 	public void avancerEnFonctionDeLaVitesse() {
-		coordXEnMetres += vitesseMetreParSecondes
-				* Math.cos(Math.toRadians(angle));
-		coordYEnMetres -= vitesseMetreParSecondes
-				* Math.sin(Math.toRadians(angle));
-		
+
+		long deltaTemps = 0;
+
+		if (dernierTemps > 0) {
+
+			deltaTemps = System.currentTimeMillis() - dernierTemps;
+		}
+
+		dernierTemps = System.currentTimeMillis();
+
+		coordXEnMetres += (float) vitesseMetreParSecondes
+				* ((float) deltaTemps / 1000) * Math.cos(Math.toRadians(angle));
+
+		coordYEnMetres -= (float) vitesseMetreParSecondes
+				* ((float) deltaTemps / 1000) * Math.sin(Math.toRadians(angle));
+
 		if (procheDuBordGaucheDuDomaine() || procheDuBordDroitDuDomaine()) {
 			rebondSurBordLateralDuDomaine();
 		} else {
-			if (procheDuBordInferieurDuDomaine() || procheDuBordSuperieurDuDomaine()) {
+			if (procheDuBordInferieurDuDomaine()
+					|| procheDuBordSuperieurDuDomaine()) {
 				rebondSurBordSuperieurOuInferieurDuDomaine();
 			}
 		}
