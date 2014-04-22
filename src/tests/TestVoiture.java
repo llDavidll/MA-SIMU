@@ -57,12 +57,12 @@ public class TestVoiture {
 	@Test
 	public void testMiseAjourPositionEnFonctionVitesse() {
 		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(120, voiture.getCoordXEnMetres());
+		assertEquals(50, voiture.getCoordXEnMetres());
 		
 		voiture = new Voiture(20, 30, 100);
 		voiture.setAngle(-90);
 		voiture.avancerEnFonctionDeLaVitesse();
-		assertEquals(130, voiture.getCoordYEnMetres());
+		assertEquals(30, voiture.getCoordYEnMetres());
 	}
 	
 	@Test
