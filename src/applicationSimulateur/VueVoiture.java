@@ -38,7 +38,7 @@ public class VueVoiture extends JFrame {
 	}
 
 	public void setVoiture(int xVoiture, int yVoiture, double angle) {
-		this.voiture = new Triangle2D(new Vector2D(xVoiture, yVoiture), angle);
+		this.voiture = new Triangle2D(new Vecteur2D(xVoiture, yVoiture), angle);
 	}
 
 	private class VueVoiturePanel extends JPanel {

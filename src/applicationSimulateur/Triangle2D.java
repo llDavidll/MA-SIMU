@@ -1,10 +1,10 @@
 package applicationSimulateur;
 
 public class Triangle2D {
-	private Vector2D avant;
-	private Vector2D arriereDroit;
-	private Vector2D arriereGauche;
-	private Vector2D position;
+	private Vecteur2D avant;
+	private Vecteur2D arriereDroit;
+	private Vecteur2D arriereGauche;
+	private Vecteur2D position;
 	private double angle;
 	private int longueur;
 	private int largeur;
@@ -13,34 +13,34 @@ public class Triangle2D {
 		this(30, 10);
 	}
 
-	public Triangle2D(Vector2D position, double angle) {
+	public Triangle2D(Vecteur2D position, double angle) {
 		this(30, 10, angle, position);
 	}
 
 	public Triangle2D(int longueur, int largeur) {
-		this(longueur, largeur, 90, new Vector2D(100, 100));
+		this(longueur, largeur, 90, new Vecteur2D(100, 100));
 	}
 
-	public Triangle2D(int longueur, int largeur, double angle, Vector2D position) {
+	public Triangle2D(int longueur, int largeur, double angle, Vecteur2D position) {
 		this.angle = angle;
 		this.longueur = longueur;
 		this.largeur = largeur;
-		avant = new Vector2D();
-		arriereDroit = new Vector2D();
-		arriereGauche = new Vector2D();
+		avant = new Vecteur2D();
+		arriereDroit = new Vecteur2D();
+		arriereGauche = new Vecteur2D();
 		this.position = position;
 		setRotate();
 	}
 
-	public Vector2D getAvant() {
+	public Vecteur2D getAvant() {
 		return avant;
 	}
 
-	public Vector2D getArriereDroit() {
+	public Vecteur2D getArriereDroit() {
 		return arriereDroit;
 	}
 
-	public Vector2D getArriereGauche() {
+	public Vecteur2D getArriereGauche() {
 		return arriereGauche;
 	}
 
@@ -49,7 +49,7 @@ public class Triangle2D {
 		setRotate();
 	}
 
-	public void setPosition(Vector2D position) {
+	public void setPosition(Vecteur2D position) {
 		this.position = position;
 		setRotate();
 	}
@@ -60,7 +60,7 @@ public class Triangle2D {
 		setRotateExtremiteDuTriangle(arriereGauche, 0, -largeur, angle);
 	}
 
-	private void setRotateExtremiteDuTriangle(Vector2D extremite, int x, int y, double angle) {
+	private void setRotateExtremiteDuTriangle(Vecteur2D extremite, int x, int y, double angle) {
 		extremite.setX(rotateX(x, y, angle));
 		extremite.setY(rotateY(x, y, angle));
 	}

@@ -1,14 +1,14 @@
 package applicationSimulateur;
 
-public class Vector2D {
+public class Vecteur2D {
 	private int x;
 	private int y;
 	
-	public Vector2D() {
+	public Vecteur2D() {
 		this(0, 0);
 	}
 	
-	public Vector2D(int x, int y) {
+	public Vecteur2D(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
