@@ -5,32 +5,22 @@ public class Triangle2D {
 	private Vecteur2D arriereDroit;
 	private Vecteur2D arriereGauche;
 	private Vecteur2D position;
-	private double angle;
-	private int longueur;
-	private int largeur;
 
 	public Triangle2D() {
-		this(30, 10);
+		this(new Vecteur2D(50, 50), 0);
 	}
 
 	public Triangle2D(Vecteur2D position, double angle) {
 		this(30, 10, angle, position);
 	}
 
-	public Triangle2D(int longueur, int largeur) {
-		this(longueur, largeur, 90, new Vecteur2D(100, 100));
-	}
-
 	public Triangle2D(int longueur, int largeur, double angle,
 			Vecteur2D position) {
-		this.angle = angle;
-		this.longueur = longueur;
-		this.largeur = largeur;
 		avant = new Vecteur2D();
 		arriereDroit = new Vecteur2D();
 		arriereGauche = new Vecteur2D();
 		this.position = position;
-		setRotate();
+		setRotate(longueur, largeur, angle);
 	}
 
 	public Vecteur2D getAvant() {
@@ -45,17 +35,7 @@ public class Triangle2D {
 		return arriereGauche;
 	}
 
-	public void setAngle(double angle) {
-		this.angle = angle;
-		setRotate();
-	}
-
-	public void setPosition(Vecteur2D position) {
-		this.position = position;
-		setRotate();
-	}
-
-	private void setRotate() {
+	private void setRotate(int longueur, int largeur, double angle) {
 		setRotationExtremiteDuTriangle(avant, longueur, 0, angle);
 		setRotationExtremiteDuTriangle(arriereDroit, 0, largeur, angle);
 		setRotationExtremiteDuTriangle(arriereGauche, 0, -largeur, angle);
