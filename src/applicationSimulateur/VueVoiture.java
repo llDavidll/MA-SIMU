@@ -21,11 +21,13 @@ public class VueVoiture extends JFrame {
 		super();
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		this.setResizable(false);
+		
 		this.setTitle("Simulateur de Voiture");
 		this.setSize(TailleFenetreEnPixels, TailleFenetreEnPixels);
 		this.setVisible(true);
 		this.add(new VueVoiturePanel());
+		
 		this.voiture = new Triangle2D();
 		this.controleurVoiture = controleurVoiture;
 		this.addKeyListener(new KeyAdapter() {
